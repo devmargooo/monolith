@@ -1,0 +1,2 @@
+npx nx affected:lint
+npx nx format:write --uncommitted
