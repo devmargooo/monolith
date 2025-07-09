@@ -53,6 +53,15 @@
           "trackDeps": true,
           "push": false
         }
+      },
+      "targets": {
+        "sonar": {
+          "executor": "nx:run-commands",
+          "options": {
+            "command": "sonar-scanner -D project.settings=sonar-project.properties",
+            "cwd": "."
+          }
+        }
       }
     }
   }
