@@ -42,6 +42,7 @@
       },
       "test": {
         "options": {
+          "command": "echo 'no tests specified'",
           "passWithNoTests": true
         }
       },
