@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "release": "nx version xdonate --releaseAs=minor  && git add -A && git commit --amend --no-edit"
+    "release": "nx version xdonate --releaseAs=minor  && git add -A && git commit --amend --no-edit",
+    "test": "echo 'no tests specified' && exit 0"
   },
   "private": true,
   "dependencies": {
