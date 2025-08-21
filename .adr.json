@@ -1,1 +1,7 @@
-{"language":"ru","path":"docs/adr/","prefix":"","digits":4,"extension":"md"}
+{
+  "language": "ru",
+  "path": "docs/adr/",
+  "prefix": "",
+  "digits": 4,
+  "extension": "md"
+}
