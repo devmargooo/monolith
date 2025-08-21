@@ -6,6 +6,7 @@ import { FeatureApiModule } from './feature/feature-api.module';
 import { ConfigModule } from '@nestjs/config';
 import { BaseConfig } from '../base.config';
 import { ExtsystemModule } from './extsystem/extsystem.module';
+import { ExtsystemConfig } from './extsystem/config/exsystem.config';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { ExtsystemModule } from './extsystem/extsystem.module';
     ConfigModule.forRoot({
       envFilePath: '../../.env',
       isGlobal: true,
-      load: [BaseConfig],
+      load: [BaseConfig, ExtsystemConfig],
     }),
     ExtsystemModule,
   ],
