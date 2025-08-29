@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ExtsystemService } from './extsystem.service';
 import { ExtsystemTestModule } from './test/extsystem.test.module';
+import { ExtsystemTestConfig } from './test/extsystem.test.config';
 
 describe('ExtsystemService', () => {
   let service: ExtsystemService;
@@ -18,6 +19,6 @@ describe('ExtsystemService', () => {
   });
 
   it('should return config', () => {
-    expect(service.getConfig()).toEqual({});
+    expect(service.getConfig()).toEqual(ExtsystemTestConfig);
   });
 });
