@@ -18,7 +18,6 @@ describe('ExtsystemService', () => {
   });
 
   it('should return config', () => {
-    expect(service.getConfig()).toEqual({})
+    expect(service.getConfig()).toEqual({});
   });
 });
- 

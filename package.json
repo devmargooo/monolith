@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "husky",
     "release": "nx version xdonate --releaseAs=minor  && git add -A && git commit --amend --no-edit",
+    "test": "nx run-many --target=test --all"
   },
   "private": true,
   "dependencies": {
