@@ -40,12 +40,7 @@
           }
         }
       },
-      "test": {
-        "options": {
-          "command": "echo 'no tests specified'",
-          "passWithNoTests": true
-        }
-      },
+      "test": "jest",
       "version": {
         "executor": "@jscutlery/semver:version",
         "options": {

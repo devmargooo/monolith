@@ -1,4 +1,4 @@
-/* eslint-disable */
+ 
 import { readFileSync } from 'fs';
 
 // Reading the SWC compilation config for the spec files
@@ -11,7 +11,6 @@ swcJestConfig.swcrc = false;
 
 export default {
   displayName: '@monolith/xdonate',
-  preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig]

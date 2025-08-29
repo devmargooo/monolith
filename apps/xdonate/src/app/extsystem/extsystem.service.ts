@@ -4,15 +4,14 @@ import { IExtsystemConfig } from './config/extsystem.config.interface';
 
 @Injectable()
 export class ExtsystemService {
-    constructor(private config: ConfigService) {}
+  constructor(private config: ConfigService) {}
 
-    getConfig(): IExtsystemConfig {
-        const config = this.config.get('extsystemConfig')  ;
-        if (!config) {
-            throw 'No config';
-        }
-
-        return config; 
+  getConfig(): IExtsystemConfig {
+    const config = this.config.get('extsystemConfig');
+    if (!config) {
+      throw 'No config';
     }
+
+    return config;
+  }
 }
- 

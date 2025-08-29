@@ -1,12 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ExtsystemService } from './extsystem.service';
+import { ExtsystemTestModule } from './test/extsystem.test.module';
 
 describe('ExtsystemService', () => {
   let service: ExtsystemService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ExtsystemService],
+      imports: [ExtsystemTestModule],
     }).compile();
 
     service = module.get<ExtsystemService>(ExtsystemService);
@@ -17,6 +18,7 @@ describe('ExtsystemService', () => {
   });
 
   it('should return config', () => {
-    expect(service.getConfig()).toEqual({});
+    expect(service.getConfig()).toEqual({})
   });
 });
+ 
