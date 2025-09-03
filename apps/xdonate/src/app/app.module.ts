@@ -7,6 +7,9 @@ import { ConfigModule } from '@nestjs/config';
 import { BaseConfig } from '../base.config';
 import { ExtsystemModule } from './extsystem/extsystem.module';
 import { ExtsystemConfig } from './extsystem/config/exsystem.config';
+import { DonateModule } from './donate/donate.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Donation } from './donate/entities/donate.entity';
 
 @Module({
   imports: [
@@ -17,7 +20,15 @@ import { ExtsystemConfig } from './extsystem/config/exsystem.config';
       isGlobal: true,
       load: [BaseConfig, ExtsystemConfig],
     }),
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'database.sqlite',
+      entities: [Donation],
+      synchronize: true,
+      logging: true,
+    }),
     ExtsystemModule,
+    DonateModule,
   ],
   controllers: [AppController],
   providers: [AppService],

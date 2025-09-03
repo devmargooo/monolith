@@ -6,5 +6,5 @@ export const DBConfig = {
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: true,
   autoLoadEntities: true,
-  logging: true
+  logging: true,
 };

@@ -3,6 +3,6 @@ import { ExtsystemService } from './extsystem.service';
 
 @Module({
   providers: [ExtsystemService],
-  exports: [ExtsystemService]
+  exports: [ExtsystemService],
 })
 export class ExtsystemModule {}
