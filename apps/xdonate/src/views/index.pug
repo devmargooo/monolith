@@ -1,0 +1,8 @@
+extends ./layouts/main.pug
+
+block content
+  h1 Оставляем донаты туда ⬇️
+
+  form( method="POST" action="/donate/")
+    textarea(name="message")
+    button(type="submit") Дать деняк

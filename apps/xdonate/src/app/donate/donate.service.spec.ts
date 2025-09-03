@@ -26,7 +26,7 @@ describe('DonateService', () => {
         {
           provide: getRepositoryToken(Donation),
           useValue: mockDonationRepository,
-        }
+        },
       ],
     }).compile();
 
