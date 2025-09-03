@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('DONATION')
 export class Donation {
- @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   donation_id!: string;
 
   @Column({ unique: true })
@@ -23,6 +23,6 @@ export class Donation {
   @Column()
   useremail!: string;
 
-//   @OneToOne(() => DonationMessage, (message) => message.donation)
-//   message!: DonationMessage;
+  //   @OneToOne(() => DonationMessage, (message) => message.donation)
+  //   message!: DonationMessage;
 }
