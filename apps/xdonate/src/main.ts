@@ -14,8 +14,8 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  app.setViewEngine('pug'); 
-  app.setBaseViewsDir(join(__dirname, '..', 'src', 'views')) 
+  app.setViewEngine('pug');
+  app.setBaseViewsDir(join(__dirname, '..', 'src', 'views'));
   const port = process.env.PORT || '3000';
   setupSwagger(app, port);
   await app.listen(port);

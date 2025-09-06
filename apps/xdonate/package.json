@@ -56,6 +56,13 @@
           "command": "sonar-scanner -D project.settings=sonar-project.properties",
           "cwd": "."
         }
+      },
+      "migration-generate": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "ts-node -r tsconfig-paths/register --project tsconfig.app.json ../../node_modules/typeorm/cli migration:generate migrations/{args.name} -d src/config/orm.config.ts",
+          "cwd": "apps/notes"
+        }
       }
     }
   }

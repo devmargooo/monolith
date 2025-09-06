@@ -10,4 +10,9 @@ export class AppController {
   index() {
     return;
   }
+
+  @Get("/getdata")
+  getData() {
+    return 'Hello API';
+  }
 }

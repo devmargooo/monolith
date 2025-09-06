@@ -4,12 +4,12 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { FeatureApiModule } from './feature/feature-api.module';
 import { ConfigModule } from '@nestjs/config';
-import { BaseConfig } from '../base.config';
+import { BaseConfig } from '../config/base.config';
 import { ExtsystemModule } from './extsystem/extsystem.module';
 import { ExtsystemConfig } from './extsystem/config/exsystem.config';
 import { DonateModule } from './donate/donate.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Donation } from './donate/entities/donate.entity';
+import { DBConfig } from '../config/db.config';
 
 @Module({
   imports: [
@@ -20,13 +20,7 @@ import { Donation } from './donate/entities/donate.entity';
       isGlobal: true,
       load: [BaseConfig, ExtsystemConfig],
     }),
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'database.sqlite',
-      entities: [Donation],
-      synchronize: true,
-      logging: true,
-    }),
+    TypeOrmModule.forRoot(DBConfig),
     ExtsystemModule,
     DonateModule,
   ],
