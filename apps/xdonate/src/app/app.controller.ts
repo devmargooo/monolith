@@ -11,7 +11,7 @@ export class AppController {
     return;
   }
 
-  @Get("/getdata")
+  @Get('/getdata')
   getData() {
     return 'Hello API';
   }
