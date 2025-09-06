@@ -1,4 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity('DONATION')
 export class Donation {
@@ -11,7 +16,7 @@ export class Donation {
   @Column('decimal', { precision: 10, scale: 2 })
   amount!: number;
 
-  @Column('datetime') // Используем datetime вместо timestamp
+  @CreateDateColumn({ type: 'datetime', name: 'timestamp' }) // Используем datetime вместо timestamp
   timestamp!: Date;
 
   @Column()

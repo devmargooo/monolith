@@ -1,0 +1,5 @@
+FROM builder
+
+WORKDIR /app
+COPY ./apps ./apps
+CMD ["npx", "nx", "test", "xdonate"]

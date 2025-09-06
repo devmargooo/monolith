@@ -1,5 +1,4 @@
-import { IsUUID, IsString, IsNumber, IsDate, IsEmail } from 'class-validator';
-import { Type } from 'class-transformer';
+import { IsUUID, IsString, IsNumber, IsEmail } from 'class-validator';
 
 export class CreateDonateDto {
   @IsUUID()
@@ -8,9 +7,9 @@ export class CreateDonateDto {
   @IsNumber()
   amount!: number;
 
-  @IsDate()
-  @Type(() => Date)
-  timestamp!: Date;
+  // @IsDate()
+  // @Type(() => Date)
+  // timestamp!: Date;
 
   @IsString()
   status!: string;

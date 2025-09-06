@@ -1,35 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DonateController } from './donate.controller';
-import { DonateService } from './donate.service';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { Donation } from './entities/donate.entity';
-import { Repository } from 'typeorm';
-
-const mockDonationRepository = {
-  create: jest.fn(),
-  save: jest.fn(),
-  find: jest.fn(),
-  findOne: jest.fn(),
-  createQueryBuilder: jest.fn(() => ({
-    select: jest.fn().mockReturnThis(),
-    where: jest.fn().mockReturnThis(),
-    getRawOne: jest.fn(),
-  })),
-};
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { SqliteTestConfig } from './test/donate.db.test.config';
+import { DonateTestModule } from './test/donate.test.module';
 
 describe('DonateController', () => {
   let controller: DonateController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [DonateController],
-      providers: [
-        DonateService,
-        {
-          provide: getRepositoryToken(Donation),
-          useValue: mockDonationRepository,
-        },
-      ],
+      imports: [TypeOrmModule.forRoot(SqliteTestConfig), DonateTestModule],
     }).compile();
 
     controller = module.get<DonateController>(DonateController);
