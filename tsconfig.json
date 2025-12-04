@@ -8,6 +8,18 @@
     },
     {
       "path": "./apps/xdonate"
+    },
+    {
+      "path": "./apps/authservice-e2e"
+    },
+    {
+      "path": "./apps/authservice"
+    },
+    {
+      "path": "./apps/payservice-e2e"
+    },
+    {
+      "path": "./apps/payservice"
     }
   ]
 }

@@ -50,7 +50,11 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/xdonate-e2e/**/*"]
+      "exclude": [
+        "apps/xdonate-e2e/**/*",
+        "apps/authservice-e2e/**/*",
+        "apps/payservice-e2e/**/*"
+      ]
     }
   ],
   "targetDefaults": {
