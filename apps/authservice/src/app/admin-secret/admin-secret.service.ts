@@ -39,14 +39,16 @@ export class AdminSecretService {
    * @returns true если пароль верный, false если нет или записи не существует
    */
   async verifyPassword(password: string): Promise<boolean> {
-    const adminSecret = await this.adminSecretRepository.findOne({
+    const adminSecrets = await this.adminSecretRepository.find({
+      take: 1,
       order: { createdAt: 'DESC' },
     });
 
-    if (!adminSecret) {
+    if (adminSecrets.length === 0) {
       return false;
     }
 
+    const adminSecret = adminSecrets[0];
     return await bcrypt.compare(password, adminSecret.hashedPassword);
   }
 
