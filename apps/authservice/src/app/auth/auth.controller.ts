@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { LoginResponseDto } from './dto/login-response.dto';
 import { LoginDto } from './dto/login.dto';
 import { PasswordUpdateDto } from './dto/password-update.dto';
+import { RefreshDto } from './dto/refresh.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
 @Controller()
@@ -13,6 +14,11 @@ export class AuthController {
   @Post('login')
   async login(@Body() loginDto: LoginDto): Promise<LoginResponseDto> {
     return this.authService.login(loginDto);
+  }
+
+  @Post('refresh')
+  async refresh(@Body() refreshDto: RefreshDto): Promise<LoginResponseDto> {
+    return this.authService.refresh(refreshDto);
   }
 
   @Post('pswdupdate')

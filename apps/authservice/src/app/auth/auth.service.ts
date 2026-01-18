@@ -5,6 +5,7 @@ import { AdminSecret } from '../admin-secret/entities/admin-secret.entity';
 import { LoginResponseDto } from './dto/login-response.dto';
 import { LoginDto } from './dto/login.dto';
 import { PasswordUpdateDto } from './dto/password-update.dto';
+import { RefreshDto } from './dto/refresh.dto';
 
 @Injectable()
 export class AuthService {
@@ -47,5 +48,40 @@ export class AuthService {
     return await this.adminSecretService.setPassword(
       passwordUpdateDto.password
     );
+  }
+
+  async refresh(refreshDto: RefreshDto): Promise<LoginResponseDto> {
+    try {
+      // Проверяем валидность refresh token
+      const payload = this.jwtService.verify(refreshDto.refreshToken);
+
+      // Проверяем, что токен содержит необходимые данные
+      if (!payload || !payload.sub || !payload.login) {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      // Проверяем, что логин соответствует админу
+      if (payload.login !== this.ADMIN_LOGIN) {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      // Генерируем новый access token
+      const newPayload = { sub: payload.sub, login: payload.login };
+      const accessToken = this.jwtService.sign(newPayload, {
+        expiresIn: '15m',
+      });
+
+      // Генерируем новый refresh token
+      const refreshToken = this.jwtService.sign(newPayload, {
+        expiresIn: '7d',
+      });
+
+      return {
+        accessToken,
+        refreshToken,
+      };
+    } catch (error) {
+      throw new UnauthorizedException('Invalid or expired refresh token');
+    }
   }
 }
