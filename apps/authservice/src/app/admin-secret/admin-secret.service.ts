@@ -19,7 +19,7 @@ export class AdminSecretService {
    */
   async setPassword(password: string): Promise<AdminSecret> {
     // Удаляем все существующие записи
-    await this.adminSecretRepository.delete({});
+    await this.adminSecretRepository.createQueryBuilder().delete().execute();
 
     // Хешируем новый пароль
     const saltRounds = 10;
