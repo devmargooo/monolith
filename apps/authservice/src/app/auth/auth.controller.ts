@@ -1,4 +1,10 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  NotImplementedException,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { AdminSecret } from '../admin-secret/entities/admin-secret.entity';
 import { AuthService } from './auth.service';
 import { LoginResponseDto } from './dto/login-response.dto';
@@ -27,5 +33,11 @@ export class AuthController {
     @Body() passwordUpdateDto: PasswordUpdateDto
   ): Promise<AdminSecret> {
     return this.authService.updatePassword(passwordUpdateDto);
+  }
+
+  @Post('logout')
+  @UseGuards(JwtAuthGuard)
+  logout() {
+    throw new NotImplementedException();
   }
 }
