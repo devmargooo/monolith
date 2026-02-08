@@ -1,6 +1,8 @@
 import {
   Body,
   Controller,
+  HttpCode,
+  HttpStatus,
   NotImplementedException,
   Post,
   UseGuards,
@@ -33,6 +35,13 @@ export class AuthController {
     @Body() passwordUpdateDto: PasswordUpdateDto
   ): Promise<AdminSecret> {
     return this.authService.updatePassword(passwordUpdateDto);
+  }
+
+  @Post('validate')
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  validate(): Promise<{message: string}> {
+    return Promise.resolve({message: 'ok'})
   }
 
   @Post('logout')
